@@ -1,0 +1,44 @@
+body {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: white;
+}
+
+.foo {
+  color: white;
+  text-align: center;
+}
+
+.gameboard-container {
+  margin-top: 50px;
+  border: 5px white solid;
+  display: grid;
+  width: 300px;
+  height: 300px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+  background-color: white;
+}
+
+.square {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square > img {
+  width: 50%;
+  padding: 0;
+  margin: 0;
+}
+
+.square:hover {
+  background-color: rgb(67, 67, 67);
+}
