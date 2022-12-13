@@ -27,6 +27,12 @@ const gameBoard = (() => {
     return WINNING_COMBINATIONS.some(winCondition);
   };
 
+  // Check if all positions in the board are symbols
+  const _checkTie = () => {
+    const allStrings = (value) => typeof value == "string";
+    return board.every(allStrings);
+  };
+
   // Restart the board to its original state
   const _restartGame = () => {
     board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -46,14 +52,21 @@ const gameBoard = (() => {
 
   // Place a given symbol in the board, log the board
   const placeSymbol = (symbol, position) => {
-    board[position] = symbol;
-    _changeTurn();
-    displayBoard.display();
-    if (_checkWin()) {
-      setTimeout(() => {
-        alert("Congratulations, you win!");
-      }, 0);
-      setTimeout(_restartGame, 0);
+    if (board[position] >= 0) {
+      board[position] = symbol;
+      _changeTurn();
+      displayBoard.display();
+      if (_checkWin()) {
+        setTimeout(() => {
+          alert("Congratulations, you win!");
+        }, 0);
+        setTimeout(_restartGame, 0);
+      } else if (_checkTie()) {
+        setTimeout(() => {
+          alert("It's a tie");
+        }, 0);
+        setTimeout(_restartGame, 0);
+      }
     }
   };
 

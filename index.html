@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
     <title>Tic-Tac-Toe</title>
     <script
       src="https://kit.fontawesome.com/9384a12df6.js"
@@ -12,20 +18,38 @@
     ></script>
   </head>
   <body>
-    <h1 class="foo">Tic Tac Toe</h1>
-    <div class="gameboard-container">
-      <div class="square" data-index="0"></div>
-      <div class="square" data-index="1"></div>
-      <div class="square" data-index="2"></div>
-      <div class="square" data-index="3"></div>
-      <div class="square" data-index="4"></div>
-      <div class="square" data-index="5"></div>
-      <div class="square" data-index="6"></div>
-      <div class="square" data-index="7"></div>
-      <div class="square" data-index="8"></div>
+    <h1>Tic Tac Toe</h1>
+    <div class="main-container">
+      <div class="turn-display">
+        <h1>Turn: </h1>
+        <img
+          src="/assets/xmark-solid.svg"
+          alt=""
+          class="x-symbol turn-symbol"
+        />
+      </div>
+      <div class="player-info player1">
+        <h1>Albert</h1>
+        <img src="/assets/xmark-solid.svg" alt="" class="x-symbol symbol" />
+      </div>
+      <div class="player-info player2">
+        <h1>Dennis</h1>
+        <img src="/assets/circle-regular.svg" alt="" class="o-symbol symbol" />
+      </div>
+      <div class="gameboard-container">
+        <div class="square" data-index="0"></div>
+        <div class="square" data-index="1"></div>
+        <div class="square" data-index="2"></div>
+        <div class="square" data-index="3"></div>
+        <div class="square" data-index="4"></div>
+        <div class="square" data-index="5"></div>
+        <div class="square" data-index="6"></div>
+        <div class="square" data-index="7"></div>
+        <div class="square" data-index="8"></div>
+      </div>
     </div>
-    <script src="/scripts/player.js" async></script>
-    <script src="/scripts/gameBoard.js" async></script>
-    <script src="/scripts/displayBoard.js" async></script>
+    <script src="/scripts/player.js"></script>
+    <script src="/scripts/gameBoard.js"></script>
+    <script src="/scripts/displayBoard.js"></script>
   </body>
 </html>
