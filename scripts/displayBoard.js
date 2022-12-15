@@ -1,6 +1,10 @@
 const displayBoard = (() => {
   let board = document.querySelectorAll(".square");
   let turnSymbol = document.querySelector(".turn-symbol");
+  const player1Name = document.querySelector(".player1-name");
+  const player2Name = document.querySelector(".player2-name");
+  const rematch = document.querySelector(".rematch");
+  const restart = document.querySelector(".restart");
 
   // ************** private methods **************
 
@@ -20,13 +24,27 @@ const displayBoard = (() => {
       : (turnSymbol.src = "/assets/circle-regular.svg");
   };
 
+  const _restartGame = () => {
+    gameBoard.restartGame();
+    modal.show();
+  };
+
   // Add event listeners to each square
   board.forEach((element) => {
     element.addEventListener("click", (event) => {
-      let index = parseInt(event.target.dataset.index);
-      gameBoard.getCurrentPlayer().makePlay(index); // Place symbol when an element of the board is clicked
+      if (gameBoard.getState() === 1) {
+        let index = parseInt(event.target.dataset.index);
+        gameBoard.getCurrentPlayer().makePlay(index); // Place symbol when an element of the board is clicked
+      }
     });
   });
+
+  rematch.addEventListener("click", () => {
+    gameBoard.restartGame();
+    display();
+  });
+
+  restart.addEventListener("click", _restartGame);
 
   // ************** public methods **************
 
@@ -41,7 +59,14 @@ const displayBoard = (() => {
     });
   };
 
+  const displayPlayers = () => {
+    let players = gameBoard.getPlayers();
+    player1Name.innerHTML = players[0].name;
+    player2Name.innerHTML = players[1].name;
+  };
+
   return {
     display,
+    displayPlayers,
   };
 })();

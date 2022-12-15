@@ -18,7 +18,22 @@
     ></script>
   </head>
   <body>
+    <div class="modal">
+      <div class="modal-content">
+        <h1>Player names</h1>
+        <input type="text" placeholder="Player 1" class="player-input" />
+        <br />
+        <input type="text" placeholder="Player 2" class="player-input" />
+        <br />
+        <div class="continue-button"><h3>Continue</h3></div>
+      </div>
+    </div>
     <h1>Tic Tac Toe</h1>
+    <div class="buttons">
+      <div class="restart button"> Restart </div>
+      <div class="rematch button"> Rematch </div>
+    </div>
+    <div class="game-announcement hidden"></div>
     <div class="main-container">
       <div class="turn-display">
         <h1>Turn: </h1>
@@ -29,11 +44,11 @@
         />
       </div>
       <div class="player-info player1">
-        <h1>Albert</h1>
+        <h1 class="player1-name">Player 1</h1>
         <img src="/assets/xmark-solid.svg" alt="" class="x-symbol symbol" />
       </div>
       <div class="player-info player2">
-        <h1>Dennis</h1>
+        <h1 class="player2-name">Player 2</h1>
         <img src="/assets/circle-regular.svg" alt="" class="o-symbol symbol" />
       </div>
       <div class="gameboard-container">
@@ -50,6 +65,7 @@
     </div>
     <script src="/scripts/player.js"></script>
     <script src="/scripts/gameBoard.js"></script>
+    <script src="/scripts/modal.js"></script>
     <script src="/scripts/displayBoard.js"></script>
   </body>
 </html>

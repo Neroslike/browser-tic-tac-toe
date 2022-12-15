@@ -2,9 +2,11 @@ const gameBoard = (() => {
   // This is the gameboard, an array of 9 empty strings
   // let board = Array.from(Array(9), () => '');
   let board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  let player1 = Player("Albert", "X");
-  let player2 = Player("Dennis", "O");
+  let player1 = Player("", "X");
+  let player2 = Player("", "O");
   let currentPlayer = player1;
+  let announcement = document.querySelector(".game-announcement");
+  let gameState = 1; // If game state is 1, it means the game is ongoing, if 0 it means the game is tied/won
 
   // ************** private methods **************
 
@@ -33,12 +35,6 @@ const gameBoard = (() => {
     return board.every(allStrings);
   };
 
-  // Restart the board to its original state
-  const _restartGame = () => {
-    board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    displayBoard.display();
-  };
-
   // When a player makes a play, the turn gets passed to the other
   const _changeTurn = () => {
     if (currentPlayer == player1) {
@@ -54,29 +50,40 @@ const gameBoard = (() => {
   const placeSymbol = (symbol, position) => {
     if (board[position] >= 0) {
       board[position] = symbol;
+      if (_checkWin()) {
+        announcement.innerHTML = `<h2>Congratulations ${currentPlayer.name}! You win this round</h2>`;
+        announcement.classList.remove("hidden");
+        gameState = 0;
+      } else if (_checkTie()) {
+        announcement.innerHTML = "<h2>It's a tie!</h2>";
+        announcement.classList.remove("hidden");
+        gameState = 0;
+      }
       _changeTurn();
       displayBoard.display();
-      if (_checkWin()) {
-        setTimeout(() => {
-          alert("Congratulations, you win!");
-        }, 0);
-        setTimeout(_restartGame, 0);
-      } else if (_checkTie()) {
-        setTimeout(() => {
-          alert("It's a tie");
-        }, 0);
-        setTimeout(_restartGame, 0);
-      }
     }
+  };
+
+  // Restart the board to its original state
+  const restartGame = () => {
+    board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    currentPlayer = player1;
+    announcement.innerHTML = "";
+    gameState = 1;
   };
 
   // Get methods
   const getCurrentPlayer = () => currentPlayer;
   const getBoard = () => board;
+  const getPlayers = () => [player1, player2];
+  const getState = () => gameState;
 
   return {
     getBoard,
     placeSymbol,
     getCurrentPlayer,
+    getPlayers,
+    getState,
+    restartGame,
   };
 })();
