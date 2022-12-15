@@ -10,8 +10,8 @@ const displayBoard = (() => {
 
   // Return html with the X or O symbol
   const _compare = (value) => {
-    let xMark = '<img src="/assets/xmark-solid.svg" alt="" />';
-    let circle = '<img src="/assets/circle-regular.svg" alt="" />';
+    let xMark = '<img src="assets/xmark-solid.svg" alt="" />';
+    let circle = '<img src="assets/circle-regular.svg" alt="" />';
     if (value >= 0) return "";
     if (value.toUpperCase() == "X") return xMark;
     if (value.toUpperCase() == "O") return circle;
@@ -20,8 +20,8 @@ const displayBoard = (() => {
 
   const _displayTurn = () => {
     gameBoard.getCurrentPlayer().symbol == "X"
-      ? (turnSymbol.src = "/assets/xmark-solid.svg")
-      : (turnSymbol.src = "/assets/circle-regular.svg");
+      ? (turnSymbol.src = "assets/xmark-solid.svg")
+      : (turnSymbol.src = "assets/circle-regular.svg");
   };
 
   const _restartGame = () => {
